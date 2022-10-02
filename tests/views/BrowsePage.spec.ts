@@ -1,10 +1,10 @@
 import { shallowMount } from '@vue/test-utils'
-import ResultsPage from '@/views/ResultsPage.vue'
+import BrowsePage from '@/views/BrowsePage.vue'
 
-describe('ResultsPage view', () => {
+describe('BrowsePage view', () => {
     it('should render Results header', () => {
         const header = 'Results'
-        const wrapper = shallowMount(ResultsPage)
+        const wrapper = shallowMount(BrowsePage)
         expect(wrapper.text()).toMatch(header)
     })
 })

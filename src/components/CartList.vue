@@ -1,5 +1,5 @@
 <template>
-    <h1>Receipt</h1>
+    <p>Cart List</p>
 </template>
 
 <script setup lang="ts">
