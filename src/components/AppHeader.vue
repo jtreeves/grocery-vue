@@ -1,6 +1,28 @@
 <template>
     <header>
-        Grocery
+        <h1>Grocery</h1>
+
+        <nav>
+            <ul>
+                <li>
+                    <RouterLink to="/home">
+                        Home
+                    </RouterLink>
+                </li>
+
+                <li>
+                    <RouterLink to="/browse">
+                        Browse
+                    </RouterLink>
+                </li>
+                
+                <li>
+                    <RouterLink to="/cart">
+                        Cart
+                    </RouterLink>
+                </li>
+            </ul>
+        </nav>
     </header>
 </template>
 
