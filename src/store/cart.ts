@@ -3,13 +3,13 @@ import {
 } from 'vue'
 import {
     Items,
-    Food
+    Product
 } from '@/interfaces'
 
 export default reactive(<Items>{
     value: [],
-    increment(food: Food) {
-        this.value.push(food)
+    increment(product: Product) {
+        this.value.push(product)
     },
     decrement() {
         this.value = []

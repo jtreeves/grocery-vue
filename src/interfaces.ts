@@ -1,20 +1,24 @@
-interface Food {
+interface Product {
+    id: string
     name: string
+    image: string
+    price: number
 }
 
 interface Category {
     name: string
+    products: string[]
 }
 
 interface Items {
-    value: Food[]
-    increment(food: Food): void
-    decrement(food: Food): void
+    value: Product[]
+    increment(product: Product): void
+    decrement(product: Product): void
     reset(): void
 }
 
 export type {
-    Food,
+    Product,
     Category,
     Items
 }
