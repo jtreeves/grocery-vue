@@ -1,6 +1,10 @@
-interface Food {}
+interface Food {
+    name: string
+}
 
-interface Category {}
+interface Category {
+    name: string
+}
 
 interface Items {
     value: Food[]

@@ -1,7 +1,7 @@
 import {
     reactive
 } from 'vue'
-import { 
+import {
     Items,
     Food
 } from '@/interfaces'
@@ -11,7 +11,7 @@ export default reactive(<Items>{
     increment(food: Food) {
         this.value.push(food)
     },
-    decrement(food: Food) {
+    decrement() {
         this.value = []
     },
     reset() {
