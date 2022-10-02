@@ -1,8 +1,12 @@
 <template>
-    Hello, world!
+    <AppHeader />
+    <RouterView />
+    <AppFooter />
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
+    import AppHeader from './components/AppHeader.vue'
+    import AppFooter from './components/AppFooter.vue'
 </script>
 
 <style>
