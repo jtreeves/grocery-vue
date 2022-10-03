@@ -1,3 +1,4 @@
+import findProductInCollection from '@/utilities/findProductInCollection'
 import {
     reactive
 } from 'vue'
@@ -5,11 +6,12 @@ import {
     Items,
     ProductTally
 } from '@/interfaces'
+import updateProductTally from '@/utilities/updateProductTally'
 
 export default reactive(<Items>{
     value: [],
     findProduct(id: string): ProductTally {
-        return this.value.filter(product => product.id === id)[0]
+        return findProductInCollection(id, this.value)
     },
     addProduct(id: string): void {
         if (!this.findProduct(id)) {
@@ -18,29 +20,11 @@ export default reactive(<Items>{
                 tally: 1
             })
         } else {
-            this.value.forEach(product => {
-                if (product.id === id) {
-                    return {
-                        ...product,
-                        tally: product.tally + 1
-                    }
-                } else {
-                    return product
-                }
-            })
+            this.value = updateProductTally(id, true, this.value)
         }
     },
     removeProduct(id: string): void {
-        this.value.forEach(product => {
-            if (product.id === id) {
-                return {
-                    ...product,
-                    tally: product.tally - 1
-                }
-            } else {
-                return product
-            }
-        })
+        this.value = updateProductTally(id, true, this.value)
     },
     reset(): void {
         this.value = []

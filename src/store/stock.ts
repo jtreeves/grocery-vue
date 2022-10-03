@@ -6,35 +6,19 @@ import {
     ProductTally
 } from '@/interfaces'
 import createInitialStock from '@/utilities/createInitialStock'
+import findProductInCollection from '@/utilities/findProductInCollection'
+import updateProductTally from '@/utilities/updateProductTally'
 
 export default reactive(<Items>{
     value: createInitialStock(),
     findProduct(id: string): ProductTally {
-        return this.value.filter(product => product.id === id)[0]
+        return findProductInCollection(id, this.value)
     },
     addProduct(id: string): void {
-        this.value.forEach(product => {
-            if (product.id === id) {
-                return {
-                    ...product,
-                    tally: product.tally + 1
-                }
-            } else {
-                return product
-            }
-        })
+        this.value = updateProductTally(id, true, this.value)
     },
     removeProduct(id: string): void {
-        this.value.forEach(product => {
-            if (product.id === id) {
-                return {
-                    ...product,
-                    tally: product.tally - 1
-                }
-            } else {
-                return product
-            }
-        })
+        this.value = updateProductTally(id, false, this.value)
     },
     reset(): void {
         this.value = createInitialStock()
