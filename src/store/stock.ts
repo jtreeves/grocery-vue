@@ -3,18 +3,40 @@ import {
 } from 'vue'
 import {
     Items,
-    Product
+    ProductTally
 } from '@/interfaces'
+import createInitialStock from '@/utilities/createInitialStock'
 
 export default reactive(<Items>{
-    value: [],
-    increment(product: Product) {
-        this.value.push(product)
+    value: createInitialStock(),
+    findProduct(id: string): ProductTally {
+        return this.value.filter(product => product.id === id)[0]
     },
-    decrement() {
-        this.value = []
+    addProduct(id: string): void {
+        this.value.forEach(product => {
+            if (product.id === id) {
+                return {
+                    ...product,
+                    tally: product.tally + 1
+                }
+            } else {
+                return product
+            }
+        })
     },
-    reset() {
-        this.value = []
+    removeProduct(id: string): void {
+        this.value.forEach(product => {
+            if (product.id === id) {
+                return {
+                    ...product,
+                    tally: product.tally - 1
+                }
+            } else {
+                return product
+            }
+        })
+    },
+    reset(): void {
+        this.value = createInitialStock()
     }
 })
