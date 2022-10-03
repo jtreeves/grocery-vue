@@ -11,7 +11,7 @@ function updateProductTally(
         if (product.id === id) {
             const updatedTally: number = increment ? product.tally + 1 : product.tally - 1
             const updatedProduct: ProductTally = {
-                ...product,
+                id: product.id,
                 tally: updatedTally
             }
 

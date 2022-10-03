@@ -18,6 +18,7 @@ module.exports = {
         'no-trailing-spaces': 0,
         '@typescript-eslint/no-empty-function': 0,
         '@typescript-eslint/no-explicit-any': 0,
+        '@typescript-eslint/no-inferrable-types': 0,
         indent: 0
     },
     overrides: [
@@ -30,5 +31,9 @@ module.exports = {
             jest: true
         }
         }
-    ]
+    ],
+    globals: {
+        defineProps: 'readonly',
+        defineEmits: 'readonly'
+    }
 }

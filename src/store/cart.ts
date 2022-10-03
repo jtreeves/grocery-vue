@@ -24,7 +24,7 @@ export default reactive(<Items>{
         }
     },
     removeProduct(id: string): void {
-        this.value = updateProductTally(id, true, this.value)
+        this.value = updateProductTally(id, false, this.value)
     },
     reset(): void {
         this.value = []
