@@ -14,7 +14,7 @@
         </option>
     </select>
 
-    <BrowseList 
+    <ProductsList 
         :products="matchingProducts"
     />
 </template>
@@ -24,7 +24,7 @@
     import { Category, ProductTally } from '@/interfaces'
     import categories from '@/data/categories'
     import stock from '@/store/stock'
-    import BrowseList from '@/components/BrowseList.vue'
+    import ProductsList from '@/components/ProductsList.vue'
     import findProductTalliesByCategory from '@/utilities/findProductTalliesByCategory'
 
     const selectedCategory: Ref<Category> = ref(categories[0])

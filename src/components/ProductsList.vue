@@ -1,6 +1,6 @@
 <template>
     <ul>
-        <BrowseItem 
+        <ProductHighlight 
             v-for="product in props.products"
             :key="product.id"
             :id="product.id"
@@ -10,7 +10,7 @@
 
 <script setup lang="ts">
     import { ProductTally } from '@/interfaces'
-    import BrowseItem from './BrowseItem.vue'
+    import ProductHighlight from './ProductHighlight.vue'
 
     const props = defineProps<{
         products: ProductTally[]
