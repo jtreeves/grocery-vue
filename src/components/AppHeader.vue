@@ -1,6 +1,6 @@
 <template>
     <header>
-        <h1>Grocery</h1>
+        <span>Grocery</span>
 
         <nav>
             <ul>
