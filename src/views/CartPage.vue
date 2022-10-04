@@ -4,11 +4,31 @@
     <ProductsList 
         :products="cart.value"
     />
+
+    <p>TOTAL: ${{ formatCurrency(total) }}</p>
+
+    <button @click="checkout">
+        CHECKOUT
+    </button>
 </template>
 
 <script setup lang="ts">
-    import ProductsList from '@/components/ProductsList.vue'
+    import { 
+        useRouter,
+        Router
+    } from 'vue-router'
     import cart from '@/store/cart'
+    import calculateTotal from '@/utilities/calculateTotal'
+    import formatCurrency from '@/utilities/formatCurrency'
+    import ProductsList from '@/components/ProductsList.vue'
+
+    const router: Router = useRouter()
+    const total: number = calculateTotal(cart.value)
+
+    function checkout(): void {
+        cart.reset()
+        router.push('/home')
+    }
 </script>
 
 <style scoped>

@@ -2,7 +2,7 @@
     <li>
         <p>{{ product.name }}</p>
         <p>{{ product.image }}</p>
-        <p>${{ formatPrice(product.price) }}</p>
+        <p>${{ formatCurrency(product.price) }}</p>
 
         <BrowseItem 
             v-if="isBrowse"
@@ -34,7 +34,7 @@
     import cart from '@/store/cart'
     import stock from '@/store/stock'
     import findProductById from '@/utilities/findProductById'
-    import formatPrice from '@/utilities/formatPrice'
+    import formatCurrency from '@/utilities/formatCurrency'
     import BrowseItem from './BrowseItem.vue'
     import CartItem from './CartItem.vue'
 
