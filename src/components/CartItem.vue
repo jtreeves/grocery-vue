@@ -1,48 +1,30 @@
 <template>
-    <li>
-        <p>{{ product.name }}</p>
-        <p>{{ product.image }}</p>
-        <p>${{ formatPrice(product.price) }}</p>
+    <button 
+        v-if="props.stockTally > 0"
+        @click="addProductToCart"
+    >
+        +
+    </button>
 
-        <button 
-            v-if="stockTally > 0"
-            @click="addProductToCart"
-        >
-            +
-        </button>
+    <p>{{ props.cartTally }}</p>
 
-        <p>{{ cartTally }}</p>
-
-        <button 
-            v-if="cartTally > 0"
-            @click="removeProductFromCart"
-        >
-            -
-        </button>
-    </li>
+    <button 
+        v-if="props.cartTally > 0"
+        @click="removeProductFromCart"
+    >
+        -
+    </button>
 </template>
 
 <script setup lang="ts">
-    import { computed, ComputedRef } from 'vue'
-    import { Product } from '@/interfaces'
     import cart from '@/store/cart'
     import stock from '@/store/stock'
-    import findProductById from '@/utilities/findProductById'
-    import formatPrice from '@/utilities/formatPrice'
 
     const props = defineProps<{
         id: string
+        stockTally: number
+        cartTally: number
     }>()
-
-    const stockTally: ComputedRef<number> = computed(() => {
-        return stock.findProduct(props.id).tally
-    })
-
-    const cartTally: ComputedRef<number> = computed(() => {
-        return cart.findProduct(props.id).tally
-    })
-
-    const product: Product = findProductById(props.id)
 
     function addProductToCart(): void {
         cart.addProduct(props.id)
