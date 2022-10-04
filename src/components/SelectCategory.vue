@@ -1,16 +1,20 @@
 <template>
-    <select 
-        v-model="currentCategory"
-        @change="emit('updateCategory', currentCategory)"
-    >
-        <option 
-            v-for="category in categories" 
-            :key="category.name"
-            :value="category" 
+    <form @change="emit('updateCategory', currentCategory)">
+        <label for="category">Category</label>
+
+        <select 
+            v-model="currentCategory"
+            name="category"
         >
-            {{ category.name }}
-        </option>
-    </select>
+            <option 
+                v-for="category in categories" 
+                :key="category.name"
+                :value="category" 
+            >
+                {{ category.name }}
+            </option>
+        </select>
+    </form>
 </template>
 
 <script setup lang="ts">
