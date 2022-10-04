@@ -1,7 +1,9 @@
 <template>
     <h1>Cart</h1>
 
-    <ProductsList :products="cart.value"/>
+    <ProductsList 
+        :products="cart.value"
+    />
 </template>
 
 <script setup lang="ts">

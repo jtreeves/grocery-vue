@@ -7,14 +7,14 @@
         <BrowseItem 
             v-if="isBrowse"
             :id="props.id"
-            :stockTally="stockTally"
+            :stock-tally="stockTally"
         />
         
         <CartItem 
             v-if="isCart"
             :id="props.id"
-            :stockTally="stockTally"
-            :cartTally="cartTally"
+            :stock-tally="stockTally"
+            :cart-tally="cartTally"
         />
     </li>
 </template>
