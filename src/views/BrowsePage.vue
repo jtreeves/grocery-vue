@@ -1,14 +1,14 @@
 <template>
     <main>
-        <h1>{{ selectedCategory.name }}</h1>
+        <h1>{{ category.name }}</h1>
 
         <SelectCategory 
-            :selected-category="selectedCategory"
-            @update-category="changeCategoryAndProducts"
+            :selected-category="category"
+            @update-category="handleCategory"
         />
 
         <ProductsList 
-            :products="matchingProducts"
+            :products="products"
         />
     </main>
 </template>
@@ -28,14 +28,14 @@
     import SelectCategory from '@/components/SelectCategory.vue'
     import ProductsList from '@/components/ProductsList.vue'
 
-    const selectedCategory: Ref<Category> = ref(categories[0])
-    const matchingProducts: Ref<ProductTally[]> = ref(stock.value)
+    const category: Ref<Category> = ref(categories[0])
+    const products: Ref<ProductTally[]> = ref(stock.value)
 
-    function changeCategoryAndProducts(
+    function handleCategory(
         newCategory: Category
     ): void {
-        selectedCategory.value = newCategory
-        matchingProducts.value = findProductTalliesByCategory(newCategory)
+        category.value = newCategory
+        products.value = findProductTalliesByCategory(newCategory)
     }
 </script>
 

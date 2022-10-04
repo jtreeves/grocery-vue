@@ -1,8 +1,10 @@
 <template>
     <li>
-        <p>{{ product.name }}</p>
-        <p>{{ product.image }}</p>
-        <p>${{ formatCurrency(product.price) }}</p>
+        <article>
+            <h2>{{ product.name }}</h2>
+            <p>{{ product.image }}</p>
+            <p>${{ formatCurrency(product.price) }}</p>
+        </article>
 
         <BrowseItem 
             v-if="isBrowse"
@@ -44,7 +46,7 @@
 
     const stockTally: ComputedRef<number> = computed(() => {
         const productInStock: ProductTally = stock.findProduct(props.id)
-        
+
         return productInStock.tally
     })
 

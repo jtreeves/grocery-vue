@@ -6,9 +6,11 @@
             :products="cart.value"
         />
 
-        <p>TOTAL: ${{ formatCurrency(total) }}</p>
+        <p>
+            TOTAL: ${{ formatCurrency(total) }}
+        </p>
 
-        <button @click="checkout">
+        <button @click="handleCheckout">
             CHECKOUT
         </button>
     </main>
@@ -27,7 +29,7 @@
     const router: Router = useRouter()
     const total: number = calculateTotal(cart.value)
 
-    function checkout(): void {
+    function handleCheckout(): void {
         cart.reset()
         router.push('/home')
     }

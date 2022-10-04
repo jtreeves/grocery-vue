@@ -1,6 +1,10 @@
 <template>
-    <form @change="emit('updateCategory', currentCategory)">
-        <label for="category">Category</label>
+    <form 
+        @change="emit('updateCategory', currentCategory)"
+    >
+        <label for="category">
+            Category
+        </label>
 
         <select 
             v-model="currentCategory"

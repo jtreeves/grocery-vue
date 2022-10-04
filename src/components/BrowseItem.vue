@@ -1,5 +1,7 @@
 <template>
-    <p v-if="props.stockTally < 6 && props.stockTally > 0">
+    <p 
+        v-if="props.stockTally < 6 && props.stockTally > 0"
+    >
         Only {{ props.stockTally }} left in stock!
     </p>
 
@@ -7,10 +9,12 @@
         v-if="props.stockTally > 0"
         @click="addProductToCart"
     >
-        Add Product to Cart
+        Add to Cart
     </button>
 
-    <p v-if="props.stockTally === 0">
+    <p 
+        v-if="props.stockTally === 0"
+    >
         OUT OF STOCK!
     </p>
 </template>
