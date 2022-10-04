@@ -14,7 +14,7 @@
 
 ## Description
 
-This is a **TypeScript** web app using the **Vue** framework. The project was generated with the [Vue CLI](https://cli.vuejs.org). It is a part of a series of apps designed to compare various frontend frameworks. Check out the code bases for the [React](https://github.com/jtreeves/grocery-react) and [Angular](https://github.com/jtreeves/grocery-angular) versions of the same app.
+This is a **TypeScript** web app using the **Vue** framework. The project was generated with the [Vue CLI](https://cli.vuejs.org). It is a part of a series of apps designed to compare various frontend frameworks. Check out the code bases for the [React](https://github.com/jtreeves/grocery-react) and [Angular](https://github.com/jtreeves/grocery-angular) versions of the same app. View a [live version](https://grocery-vue-comparison.netlify.app) of this app on Netlify.
 
 ## Features
 
