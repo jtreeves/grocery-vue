@@ -1,14 +1,16 @@
 <template>
-    <h1>{{ selectedCategory.name }}</h1>
+    <main>
+        <h1>{{ selectedCategory.name }}</h1>
 
-    <SelectCategory 
-        :selected-category="selectedCategory"
-        @update-category="changeCategoryAndProducts"
-    />
+        <SelectCategory 
+            :selected-category="selectedCategory"
+            @update-category="changeCategoryAndProducts"
+        />
 
-    <ProductsList 
-        :products="matchingProducts"
-    />
+        <ProductsList 
+            :products="matchingProducts"
+        />
+    </main>
 </template>
 
 <script setup lang="ts">
@@ -33,7 +35,7 @@
         newCategory: Category
     ): void {
         selectedCategory.value = newCategory
-        matchingProducts.value = findProductTalliesByCategory(selectedCategory.value)
+        matchingProducts.value = findProductTalliesByCategory(newCategory)
     }
 </script>
 

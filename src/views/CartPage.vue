@@ -1,15 +1,17 @@
 <template>
-    <h1>Cart</h1>
+    <main>
+        <h1>Cart</h1>
 
-    <ProductsList 
-        :products="cart.value"
-    />
+        <ProductsList 
+            :products="cart.value"
+        />
 
-    <p>TOTAL: ${{ formatCurrency(total) }}</p>
+        <p>TOTAL: ${{ formatCurrency(total) }}</p>
 
-    <button @click="checkout">
-        CHECKOUT
-    </button>
+        <button @click="checkout">
+            CHECKOUT
+        </button>
+    </main>
 </template>
 
 <script setup lang="ts">
