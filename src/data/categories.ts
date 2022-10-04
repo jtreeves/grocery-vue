@@ -1,6 +1,5 @@
 import { Category } from '@/interfaces'
-
-import listAllProductIds from '@/utilities/listAllProductIds'
+import { listAllProductIds } from '@/utilities'
 
 const categories: Category[] = [
     {

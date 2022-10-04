@@ -1,9 +1,9 @@
 <template>
     <li>
         <article>
-            <h2>{{ product.name }}</h2>
-            <p>{{ product.image }}</p>
-            <p>${{ formatCurrency(product.price) }}</p>
+            <h2>{{ name }}</h2>
+            <p>{{ image }}</p>
+            <p>{{ price }}</p>
         </article>
 
         <BrowseItem 
@@ -31,12 +31,17 @@
         ComputedRef 
     } from 'vue'
     import { 
-        Product, ProductTally 
+        Product, 
+        ProductTally 
     } from '@/interfaces'
-    import cart from '@/store/cart'
-    import stock from '@/store/stock'
-    import findProductById from '@/utilities/findProductById'
-    import formatCurrency from '@/utilities/formatCurrency'
+    import { 
+        cart, 
+        stock 
+    } from '@/store'
+    import { 
+        findProductById, 
+        formatCurrency 
+    } from '@/utilities'
     import BrowseItem from './BrowseItem.vue'
     import CartItem from './CartItem.vue'
 
@@ -57,6 +62,9 @@
     })
 
     const product: Product = findProductById(props.id)
+    const name: string = product.name
+    const image: string = product.image
+    const price: string = formatCurrency(product.price)
     const route: RouteLocationNormalizedLoaded = useRoute()
     const isBrowse: boolean = route.path.includes('browse')
     const isCart: boolean = route.path.includes('cart')

@@ -24,7 +24,7 @@
 <script setup lang="ts">
     import { ref, Ref } from 'vue'
     import { Category } from '@/interfaces'
-    import categories from '@/data/categories'
+    import { categories } from '@/data'
 
     const props = defineProps<{
         selectedCategory: Category

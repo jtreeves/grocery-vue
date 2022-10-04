@@ -6,7 +6,9 @@ import {
     Items,
     ProductTally
 } from '@/interfaces'
-import updateProductTally from '@/utilities/updateProductTally'
+import { 
+    updateProductTally 
+} from '@/utilities'
 
 export default reactive(<Items>{
     value: [],

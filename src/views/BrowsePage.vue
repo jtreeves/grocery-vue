@@ -22,9 +22,15 @@
         Category, 
         ProductTally 
     } from '@/interfaces'
-    import categories from '@/data/categories'
-    import stock from '@/store/stock'
-    import findProductTalliesByCategory from '@/utilities/findProductTalliesByCategory'
+    import { 
+        categories 
+    } from '@/data'
+    import { 
+        stock 
+    } from '@/store'
+    import { 
+        findProductTalliesByCategory 
+    } from '@/utilities'
     import SelectCategory from '@/components/SelectCategory.vue'
     import ProductsList from '@/components/ProductsList.vue'
 

@@ -1,5 +1,5 @@
 import { Product } from '@/interfaces'
-import products from '@/data/products'
+import { products } from '@/data'
 
 function findProductById(
     id: string

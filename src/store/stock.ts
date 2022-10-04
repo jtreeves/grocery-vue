@@ -5,9 +5,11 @@ import {
     Items,
     ProductTally
 } from '@/interfaces'
-import createInitialStock from '@/utilities/createInitialStock'
-import findProductInCollection from '@/utilities/findProductInCollection'
-import updateProductTally from '@/utilities/updateProductTally'
+import { 
+    createInitialStock,
+    findProductInCollection,
+    updateProductTally 
+} from '@/utilities'
 
 export default reactive(<Items>{
     value: createInitialStock(),

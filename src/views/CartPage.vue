@@ -7,7 +7,7 @@
         />
 
         <p>
-            TOTAL: ${{ formatCurrency(total) }}
+            TOTAL: {{ formattedTotal }}
         </p>
 
         <button @click="handleCheckout">
@@ -21,13 +21,18 @@
         useRouter,
         Router
     } from 'vue-router'
-    import cart from '@/store/cart'
-    import calculateTotal from '@/utilities/calculateTotal'
-    import formatCurrency from '@/utilities/formatCurrency'
+    import { 
+        cart 
+    } from '@/store'
+    import { 
+        calculateTotal,
+        formatCurrency
+    } from '@/utilities'
     import ProductsList from '@/components/ProductsList.vue'
 
     const router: Router = useRouter()
     const total: number = calculateTotal(cart.value)
+    const formattedTotal: string = formatCurrency(total)
 
     function handleCheckout(): void {
         cart.reset()
