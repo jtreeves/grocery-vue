@@ -1,5 +1,5 @@
 import { Category, ProductTally } from '@/interfaces'
-import { stock } from '@/store'
+import stock from '@/store/stock'
 
 function findProductTalliesByCategory(
     category: Category

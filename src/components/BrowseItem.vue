@@ -20,7 +20,8 @@
 </template>
 
 <script setup lang="ts">
-    import { cart, stock } from '@/store'
+    import cart from '@/store/cart'
+    import stock from '@/store/stock'
 
     const props = defineProps<{
         id: string

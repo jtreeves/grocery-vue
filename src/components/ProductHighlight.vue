@@ -34,14 +34,10 @@
         Product, 
         ProductTally 
     } from '@/interfaces'
-    import { 
-        cart, 
-        stock 
-    } from '@/store'
-    import { 
-        findProductById, 
-        formatCurrency 
-    } from '@/utilities'
+    import cart from '@/store/cart'
+    import stock from '@/store/stock'
+    import findProductById from '@/utilities/findProductById'
+    import formatCurrency from '@/utilities/formatCurrency'
     import BrowseItem from './BrowseItem.vue'
     import CartItem from './CartItem.vue'
 
