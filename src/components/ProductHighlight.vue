@@ -29,7 +29,7 @@
         ComputedRef 
     } from 'vue'
     import { 
-        Product 
+        Product, ProductTally 
     } from '@/interfaces'
     import cart from '@/store/cart'
     import stock from '@/store/stock'
@@ -43,11 +43,15 @@
     }>()
 
     const stockTally: ComputedRef<number> = computed(() => {
-        return stock.findProduct(props.id).tally
+        const productInStock: ProductTally = stock.findProduct(props.id)
+        
+        return productInStock.tally
     })
 
     const cartTally: ComputedRef<number> = computed(() => {
-        return cart.findProduct(props.id).tally
+        const productInCart: ProductTally = cart.findProduct(props.id)
+
+        return productInCart ? productInCart.tally : 0
     })
 
     const product: Product = findProductById(props.id)
