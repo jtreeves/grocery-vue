@@ -1,11 +1,13 @@
 <template>
     <main>
-        <h1>{{ category.name }}</h1>
-
+        <h1>Browse</h1>
+        
         <SelectCategory 
             :selected-category="category"
             @update-category="handleCategory"
         />
+
+        <h2>Viewing {{ category.name }}</h2>
 
         <ProductsList 
             :products="products"

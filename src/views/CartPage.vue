@@ -2,17 +2,28 @@
     <main>
         <h1>Cart</h1>
 
-        <ProductsList 
-            :products="cart.value"
-        />
-
-        <p>
-            TOTAL: {{ formattedTotal }}
+        <p v-if="cart.value.length === 0">
+            Your shopping cart is empty! Go <RouterLink to="/browse">browse</RouterLink> our items, and stock up!
         </p>
 
-        <button @click="handleCheckout">
-            CHECKOUT
-        </button>
+        <section v-if="cart.value.length !== 0">
+            <ProductsList 
+                :products="cart.value"
+            />
+
+            <div id="cart-checkout">
+                <p>
+                    TOTAL: {{ formattedTotal }}
+                </p>
+
+                <button 
+                    @click="handleCheckout"
+                    title="ALL PURCHASES FINAL; NO REFUNDS"
+                >
+                    CHECKOUT
+                </button>
+            </div>
+        </section>
     </main>
 </template>
 
