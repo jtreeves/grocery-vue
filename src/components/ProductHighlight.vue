@@ -1,9 +1,9 @@
 <template>
-    <li>
-        <article>
+    <li :class="mainClass">
+        <article class="product-details">
             <h2>{{ name }}</h2>
-            <p>{{ image }}</p>
-            <p>{{ price }}</p>
+            <p class="product-image">{{ image }}</p>
+            <p class="product-price">{{ price }}</p>
         </article>
 
         <BrowseItem 
@@ -64,6 +64,9 @@
     const route: RouteLocationNormalizedLoaded = useRoute()
     const isBrowse: boolean = route.path.includes('browse')
     const isCart: boolean = route.path.includes('cart')
+    const productClass: string = 'product-highlight'
+    const stockClass: string = 'out-of-stock'
+    const mainClass: string = stockTally.value > 0 ? productClass : `${productClass} ${stockClass}`
 </script>
 
 <style scoped>

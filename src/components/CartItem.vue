@@ -1,24 +1,39 @@
 <template>
-    <button 
-        v-if="props.stockTally > 0"
-        @click="addProductToCart"
-    >
-        +
-    </button>
+    <article>
+        <p class="math-symbol">x</p>
 
-    <p>{{ props.cartTally }}</p>
+        <div>
+            <button 
+                v-if="props.stockTally > 0"
+                @click="topFunction"
+                :class="topClass"
+                :title="topHover"
+            >
+                {{ topText }}
+            </button>
 
-    <button 
-        v-if="props.cartTally > 0"
-        @click="removeProductFromCart"
-    >
-        -
-    </button>
+            <p>{{ props.cartTally }}</p>
+
+            <button 
+                v-if="props.cartTally > 0"
+                @click="removeProductFromCart"
+                :title="downHover"
+            >
+                -
+            </button>
+        </div>
+
+        <p class="math-symbol">=</p>
+
+        <p class="item-total">{{ formattedTotal }}</p>
+    </article>
 </template>
 
 <script setup lang="ts">
     import cart from '@/store/cart'
     import stock from '@/store/stock'
+    import calculateItemTotal from '@/utilities/calculateItemTotal'
+    import formatCurrency from '@/utilities/formatCurrency'
 
     const props = defineProps<{
         id: string
@@ -35,6 +50,15 @@
         cart.removeProduct(props.id)
         stock.addProduct(props.id)
     }
+
+    const inStock: boolean = props.stockTally > 0
+    const itemTotal: number = calculateItemTotal(props.id, props.cartTally)
+    const formattedTotal: string = formatCurrency(itemTotal)
+    const topClass: string = inStock ? 'product-button' : 'product-button muted-button'
+    const topText: string = inStock ? '+' : 'x'
+    const topHover: string = inStock ? 'INCREASE QUANTITY' : 'OUT OF STOCK'
+    const downHover: string = props.cartTally === 1 ? 'DELETE FROM CART' : 'DECREASE QUANTITY'
+    const topFunction: () => void = inStock ? addProductToCart : () => {}
 </script>
 
 <style scoped>

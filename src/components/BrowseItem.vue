@@ -1,22 +1,29 @@
 <template>
-    <p 
-        v-if="props.stockTally < 6 && props.stockTally > 0"
-    >
-        Only {{ props.stockTally }} left in stock!
-    </p>
+    <article>
+        <button 
+            @click="buttonFunction"
+            :title="hoverText"
+            :class="buttonClass"
+        >
+            {{ buttonText }}
+        </button>
 
-    <button 
-        v-if="props.stockTally > 0"
-        @click="addProductToCart"
-    >
-        Add to Cart
-    </button>
+        <div
+            v-if="props.stockTally < 6 && props.stockTally > 0"
+        >
+            <p>
+                Only {{ props.stockTally }} left in stock!
+            </p>
+        </div>
 
-    <p 
-        v-if="props.stockTally === 0"
-    >
-        OUT OF STOCK!
-    </p>
+        <div 
+            v-if="props.stockTally === 0"
+        >
+            <p>
+                OUT OF STOCK!
+            </p>
+        </div>
+    </article>
 </template>
 
 <script setup lang="ts">
@@ -32,6 +39,12 @@
         cart.addProduct(props.id)
         stock.removeProduct(props.id)
     }
+
+    const inStock: boolean = props.stockTally > 0
+    const buttonText: string = inStock ? '+' : 'x'
+    const hoverText: string = inStock ? 'ADD TO CART' : 'OUT OF STOCK'
+    const buttonClass: string = inStock ? 'product-button' : 'product-button muted-button'
+    const buttonFunction: () => void = inStock ? addProductToCart : () => {}
 </script>
 
 <style scoped>
