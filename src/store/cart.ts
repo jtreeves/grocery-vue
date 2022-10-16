@@ -7,6 +7,7 @@ import {
     ProductTally
 } from '@/interfaces'
 import updateProductTally from '@/utilities/updateProductTally'
+import filterOutEmptyItems from '@/utilities/filterOutEmptyItems'
 
 export default reactive(<Items>{
     value: [],
@@ -24,7 +25,9 @@ export default reactive(<Items>{
         }
     },
     removeProduct(id: string): void {
-        this.value = updateProductTally(id, false, this.value)
+        this.value = filterOutEmptyItems(
+            updateProductTally(id, false, this.value)
+        )
     },
     reset(): void {
         this.value = []
