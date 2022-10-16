@@ -18,7 +18,7 @@
                 
                 <li>
                     <RouterLink to="/cart">
-                        Cart
+                        Cart ({{ currentCount }})
                     </RouterLink>
                 </li>
             </ul>
@@ -27,6 +27,16 @@
 </template>
 
 <script setup lang="ts">
+    import { 
+        computed, 
+        ComputedRef 
+    } from 'vue'
+    import cart from '@/store/cart'
+    import countItemsInCart from '@/utilities/countItemsInCart'
+
+    const currentCount: ComputedRef<number> = computed(() => {
+        return countItemsInCart(cart.value)
+    })
 </script>
 
 <style scoped>
