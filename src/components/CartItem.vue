@@ -50,6 +50,26 @@
         return formattedTotal
     })
 
+    const topText: ComputedRef<string> = computed(() => {
+        return props.stockTally > 0 ? '+' : 'x'
+    })
+
+    const topHover: ComputedRef<string> = computed(() => {
+        return props.stockTally > 0 ? 'INCREASE QUANTITY' : 'OUT OF STOCK'
+    })
+
+    const downHover: ComputedRef<string> = computed(() => {
+        return props.cartTally === 1 ? 'DELETE FROM CART' : 'DECREASE QUANTITY'
+    })
+
+    const topClass: ComputedRef<string> = computed(() => {
+        return props.stockTally > 0 ? '' : 'muted-button'
+    })
+
+    const topFunction: ComputedRef<() => void> = computed(() => {
+        return props.stockTally > 0 ? addProductToCart : () => {}
+    })
+    
     function addProductToCart(): void {
         cart.addProduct(props.id)
         stock.removeProduct(props.id)
@@ -59,13 +79,6 @@
         cart.removeProduct(props.id)
         stock.addProduct(props.id)
     }
-
-    const inStock: boolean = props.stockTally > 0
-    const topClass: string = inStock ? '' : 'muted-button'
-    const topText: string = inStock ? '+' : 'x'
-    const topHover: string = inStock ? 'INCREASE QUANTITY' : 'OUT OF STOCK'
-    const downHover: string = props.cartTally === 1 ? 'DELETE FROM CART' : 'DECREASE QUANTITY'
-    const topFunction: () => void = inStock ? addProductToCart : () => {}
 </script>
 
 <style scoped>

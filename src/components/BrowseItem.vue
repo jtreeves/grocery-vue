@@ -27,6 +27,10 @@
 </template>
 
 <script setup lang="ts">
+    import { 
+        computed, 
+        ComputedRef 
+    } from 'vue'
     import cart from '@/store/cart'
     import stock from '@/store/stock'
 
@@ -35,16 +39,26 @@
         stockTally: number
     }>()
 
+    const buttonText: ComputedRef<string> = computed(() => {
+        return props.stockTally > 0 ? '+' : 'x'
+    })
+
+    const hoverText: ComputedRef<string> = computed(() => {
+        return props.stockTally > 0 ? 'ADD TO CART' : 'OUT OF STOCK'
+    })
+
+    const buttonClass: ComputedRef<string> = computed(() => {
+        return props.stockTally > 0 ? '' : 'muted-button'
+    })
+
+    const buttonFunction: ComputedRef<() => void> = computed(() => {
+        return props.stockTally > 0 ? addProductToCart : () => {}
+    })
+    
     function addProductToCart(): void {
         cart.addProduct(props.id)
         stock.removeProduct(props.id)
     }
-
-    const inStock: boolean = props.stockTally > 0
-    const buttonText: string = inStock ? '+' : 'x'
-    const hoverText: string = inStock ? 'ADD TO CART' : 'OUT OF STOCK'
-    const buttonClass: string = inStock ? '' : 'muted-button'
-    const buttonFunction: () => void = inStock ? addProductToCart : () => {}
 </script>
 
 <style scoped>

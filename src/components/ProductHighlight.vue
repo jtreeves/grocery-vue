@@ -45,6 +45,14 @@
         id: string
     }>()
 
+    const product: Product = findProductById(props.id)
+    const name: string = product.name
+    const image: string = product.image
+    const price: string = formatCurrency(product.price)
+    const route: RouteLocationNormalizedLoaded = useRoute()
+    const isBrowse: boolean = route.path.includes('browse')
+    const isCart: boolean = route.path.includes('cart')
+
     const stockTally: ComputedRef<number> = computed(() => {
         const productInStock: ProductTally = stock.findProduct(props.id)
 
@@ -57,16 +65,12 @@
         return productInCart ? productInCart.tally : 0
     })
 
-    const product: Product = findProductById(props.id)
-    const name: string = product.name
-    const image: string = product.image
-    const price: string = formatCurrency(product.price)
-    const route: RouteLocationNormalizedLoaded = useRoute()
-    const isBrowse: boolean = route.path.includes('browse')
-    const isCart: boolean = route.path.includes('cart')
-    const productClass: string = 'product-highlight'
-    const stockClass: string = 'out-of-stock'
-    const mainClass: string = stockTally.value > 0 ? productClass : `${productClass} ${stockClass}`
+    const mainClass: ComputedRef<string> = computed(() => {
+        const productClass: string = 'product-highlight'
+        const stockClass: string = 'out-of-stock'
+
+        return stockTally.value > 0 ? productClass : `${productClass} ${stockClass}`
+    })
 </script>
 
 <style scoped>
