@@ -102,6 +102,7 @@
         width: 30px;
         border: 1px solid #41B883;
         background-color: #41B883;
+        color: #34495E;
         border-radius: 50%;
     }
 </style>

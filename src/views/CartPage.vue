@@ -86,6 +86,7 @@
     section div button {
         border: 1px solid #41B883;
         background-color: #41B883;
+        color: #34495E;
         border-radius: 5px;
         padding: 5px;
     }
