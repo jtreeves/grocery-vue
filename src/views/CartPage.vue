@@ -13,7 +13,7 @@
 
             <div>
                 <p>
-                    TOTAL: {{ formattedTotal }}
+                    TOTAL: {{ currentTotal }}
                 </p>
 
                 <button 
@@ -29,6 +29,10 @@
 
 <script setup lang="ts">
     import { 
+        computed, 
+        ComputedRef 
+    } from 'vue'
+    import { 
         useRouter,
         Router
     } from 'vue-router'
@@ -38,8 +42,13 @@
     import ProductsList from '@/components/ProductsList.vue'
 
     const router: Router = useRouter()
-    const total: number = calculateTotal(cart.value)
-    const formattedTotal: string = formatCurrency(total)
+
+    const currentTotal: ComputedRef<string> = computed(() => {
+        const total: number = calculateTotal(cart.value)
+        const formattedTotal: string = formatCurrency(total)
+        
+        return formattedTotal
+    })
 
     function handleCheckout(): void {
         cart.reset()

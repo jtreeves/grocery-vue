@@ -23,11 +23,15 @@
 
         <p class="math-symbol">=</p>
 
-        <p>{{ formattedTotal }}</p>
+        <p>{{ itemTotal }}</p>
     </article>
 </template>
 
 <script setup lang="ts">
+    import { 
+        computed, 
+        ComputedRef 
+    } from 'vue'
     import cart from '@/store/cart'
     import stock from '@/store/stock'
     import calculateItemTotal from '@/utilities/calculateItemTotal'
@@ -38,6 +42,13 @@
         stockTally: number
         cartTally: number
     }>()
+
+    const itemTotal: ComputedRef<string> = computed(() => {
+        const total: number = calculateItemTotal(props.id, props.cartTally)
+        const formattedTotal: string = formatCurrency(total)
+
+        return formattedTotal
+    })
 
     function addProductToCart(): void {
         cart.addProduct(props.id)
@@ -50,8 +61,6 @@
     }
 
     const inStock: boolean = props.stockTally > 0
-    const itemTotal: number = calculateItemTotal(props.id, props.cartTally)
-    const formattedTotal: string = formatCurrency(itemTotal)
     const topClass: string = inStock ? '' : 'muted-button'
     const topText: string = inStock ? '+' : 'x'
     const topHover: string = inStock ? 'INCREASE QUANTITY' : 'OUT OF STOCK'
