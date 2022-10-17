@@ -1,5 +1,5 @@
 <template>
-    <main>
+    <main id="browse">
         <h1>Browse</h1>
         
         <SelectCategory 
@@ -40,6 +40,3 @@
         products.value = findProductTalliesByCategory(newCategory)
     }
 </script>
-
-<style scoped>
-</style>

@@ -18,4 +18,14 @@
 </script>
 
 <style scoped>
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 50px;
+    }
+
+    #cart ul {
+        gap: 20px;
+    }
 </style>

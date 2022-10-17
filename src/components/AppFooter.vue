@@ -10,4 +10,11 @@
 </script>
 
 <style scoped>
+    footer {
+        display: flex;
+        justify-content: center;
+        padding: 50px;
+        font-size: small;
+        font-style: italic;
+    }
 </style>

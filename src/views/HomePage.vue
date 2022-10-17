@@ -26,8 +26,10 @@
     </main>
 </template>
 
-<script setup lang="ts">
-</script>
-
 <style scoped>
+    section {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
 </style>

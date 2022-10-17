@@ -1,10 +1,9 @@
 <template>
-    <article>
+    <article class="cart-item">
         <p class="math-symbol">x</p>
 
         <div>
-            <button 
-                v-if="props.stockTally > 0"
+            <button
                 @click="topFunction"
                 :class="topClass"
                 :title="topHover"
@@ -15,7 +14,6 @@
             <p>{{ props.cartTally }}</p>
 
             <button 
-                v-if="props.cartTally > 0"
                 @click="removeProductFromCart"
                 :title="downHover"
             >
@@ -25,7 +23,7 @@
 
         <p class="math-symbol">=</p>
 
-        <p class="item-total">{{ formattedTotal }}</p>
+        <p>{{ formattedTotal }}</p>
     </article>
 </template>
 
@@ -54,7 +52,7 @@
     const inStock: boolean = props.stockTally > 0
     const itemTotal: number = calculateItemTotal(props.id, props.cartTally)
     const formattedTotal: string = formatCurrency(itemTotal)
-    const topClass: string = inStock ? 'product-button' : 'product-button muted-button'
+    const topClass: string = inStock ? '' : 'muted-button'
     const topText: string = inStock ? '+' : 'x'
     const topHover: string = inStock ? 'INCREASE QUANTITY' : 'OUT OF STOCK'
     const downHover: string = props.cartTally === 1 ? 'DELETE FROM CART' : 'DECREASE QUANTITY'
@@ -62,4 +60,26 @@
 </script>
 
 <style scoped>
+    .cart-item {
+        width: 40%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .cart-item div {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+
+    button {
+        height: 30px;
+        width: 30px;
+        border: 1px solid #41B883;
+        background-color: #41B883;
+        border-radius: 50%;
+    }
 </style>

@@ -1,5 +1,5 @@
 <template>
-    <main>
+    <main id="cart">
         <h1>Cart</h1>
 
         <p v-if="cart.value.length === 0">
@@ -11,7 +11,7 @@
                 :products="cart.value"
             />
 
-            <div id="cart-checkout">
+            <div>
                 <p>
                     TOTAL: {{ formattedTotal }}
                 </p>
@@ -48,4 +48,36 @@
 </script>
 
 <style scoped>
+    a {
+        color: #41B883;
+        font-weight: bold;
+    }
+
+    a:hover {
+        font-style: italic;
+        text-decoration: underline;
+    }
+
+    section {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    section div {
+        display: flex;
+        flex-direction: column;
+        align-self: flex-end;
+        align-items: flex-end;
+        gap: 10px;
+        margin-right: 20px;
+    }
+
+    section div button {
+        border: 1px solid #41B883;
+        background-color: #41B883;
+        border-radius: 5px;
+        padding: 5px;
+    }
 </style>

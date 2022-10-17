@@ -70,4 +70,48 @@
 </script>
 
 <style scoped>
+    li {
+        display: flex;
+        justify-content: center;
+        border: 5px solid #41B883;
+        border-radius: 5px;
+        padding: 20px;
+        height: 200px;
+        width: 200px;
+        position: relative;
+    }
+
+    article {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .product-image {
+        font-size: 100px;
+    }
+
+    .product-price {
+        font-style: italic;
+    }
+
+    #browse .out-of-stock {
+        filter: grayscale(1);
+    }
+
+    #cart li {
+        width: 100%;
+        justify-content: space-between;
+        height: 100px;
+    }
+
+    #cart .product-details {
+        flex-direction: row;
+        width: 50%;
+    }
+
+    #cart .product-image {
+        order: -1;
+    }
 </style>

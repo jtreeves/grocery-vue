@@ -40,4 +40,34 @@
 </script>
 
 <style scoped>
+    header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 20px;
+        background-color: #41B883;
+    }
+
+    header span {
+        font-family: 'Bubblegum Sans', cursive;
+        color: #34495E;
+        font-size: xx-large;
+    }
+
+    nav ul {
+        display: flex;
+        gap: 30px;
+    }
+
+    nav ul li {
+        text-transform: uppercase;
+    }
+
+    nav ul li a {
+        color: #34495E;
+    }
+
+    header ul li:hover {
+        font-weight: bold;
+    }
 </style>

@@ -3,7 +3,7 @@
         @change="emit('updateCategory', currentCategory)"
     >
         <label for="category">
-            Category
+            Select Category
         </label>
 
         <select 
@@ -41,4 +41,23 @@
 </script>
 
 <style scoped>
+    form {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    label {
+        font-size: small;
+        font-style: italic;
+    }
+
+    select {
+        border: 1px solid #41B883;
+        border-radius: 3px;
+        padding: 5px;
+        color: #41B883;
+        background-color: #34495E;
+        outline: 0;
+    }
 </style>
