@@ -2,7 +2,7 @@
     <article>
         <button 
             @click="buttonFunction"
-            :title="hoverText"
+            :title="buttonHover"
             :class="buttonClass"
         >
             {{ buttonText }}
@@ -43,7 +43,7 @@
         return props.stockTally > 0 ? '+' : 'x'
     })
 
-    const hoverText: ComputedRef<string> = computed(() => {
+    const buttonHover: ComputedRef<string> = computed(() => {
         return props.stockTally > 0 ? 'ADD TO CART' : 'OUT OF STOCK'
     })
 
@@ -54,7 +54,7 @@
     const buttonFunction: ComputedRef<() => void> = computed(() => {
         return props.stockTally > 0 ? addProductToCart : () => {}
     })
-    
+
     function addProductToCart(): void {
         cart.addProduct(props.id)
         stock.removeProduct(props.id)

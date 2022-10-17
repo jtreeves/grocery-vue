@@ -23,7 +23,7 @@
 
         <p class="math-symbol">=</p>
 
-        <p>{{ itemTotal }}</p>
+        <p>{{ formattedTotal }}</p>
     </article>
 </template>
 
@@ -43,11 +43,11 @@
         cartTally: number
     }>()
 
-    const itemTotal: ComputedRef<string> = computed(() => {
+    const formattedTotal: ComputedRef<string> = computed(() => {
         const total: number = calculateItemTotal(props.id, props.cartTally)
-        const formattedTotal: string = formatCurrency(total)
+        const formatted: string = formatCurrency(total)
 
-        return formattedTotal
+        return formatted
     })
 
     const topText: ComputedRef<string> = computed(() => {
@@ -69,7 +69,7 @@
     const topFunction: ComputedRef<() => void> = computed(() => {
         return props.stockTally > 0 ? addProductToCart : () => {}
     })
-    
+
     function addProductToCart(): void {
         cart.addProduct(props.id)
         stock.removeProduct(props.id)

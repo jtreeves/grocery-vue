@@ -13,7 +13,7 @@
 
             <div>
                 <p>
-                    TOTAL: {{ currentTotal }}
+                    TOTAL: {{ formattedTotal }}
                 </p>
 
                 <button 
@@ -43,11 +43,11 @@
 
     const router: Router = useRouter()
 
-    const currentTotal: ComputedRef<string> = computed(() => {
+    const formattedTotal: ComputedRef<string> = computed(() => {
         const total: number = calculateTotal(cart.value)
-        const formattedTotal: string = formatCurrency(total)
-        
-        return formattedTotal
+        const formatted: string = formatCurrency(total)
+
+        return formatted
     })
 
     function handleCheckout(): void {
